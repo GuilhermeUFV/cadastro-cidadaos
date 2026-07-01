@@ -1,17 +1,8 @@
-import express from "express";
+import { App } from "./app.js";
 
-const app = express();
-const port = 3000;
+const port = Number(process.env.PORT) || 3000;
+const app = new App();
 
-app.use(express.json());
-
-app.get("/health", (_request, response) => {
-  response.status(200).json({
-    status: "ok",
-    message: "Servidor funcionando",
-  });
-});
-
-app.listen(port, () => {
+app.express.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
