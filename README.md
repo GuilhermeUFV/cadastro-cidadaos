@@ -51,7 +51,7 @@ Antes de começar, tenha instalado:
 Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/GuilhermeUFV/cadastro-cidadaos.git
 ```
 
 Entre na pasta do projeto:
