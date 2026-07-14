@@ -1,15 +1,21 @@
 import express from "express";
 import path from "node:path";
 import { errorHandler } from "./middlewares/errorHandler.js";
+import { notFoundHandler } from "./middlewares/notFoundHandler.js";
 import { citizenRoutes } from "./routes/citizenRoutes.js";
 
 export class App {
   public readonly express = express();
 
   constructor() {
+    this.configureApplication();
     this.configureMiddlewares();
     this.configureRoutes();
     this.configureErrorHandling();
+  }
+
+  private configureApplication(): void {
+    this.express.disable("x-powered-by");
   }
 
   private configureMiddlewares(): void {
@@ -32,6 +38,7 @@ export class App {
   }
 
   private configureErrorHandling(): void {
+    this.express.use(notFoundHandler);
     this.express.use(errorHandler);
   }
 }
