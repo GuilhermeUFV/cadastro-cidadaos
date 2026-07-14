@@ -11,7 +11,10 @@
     "test:watch": "vitest",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "setup": "prisma generate && prisma migrate deploy",
+    "check": "npm run build && npm test",
+    "db:deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
