@@ -2,3 +2,10 @@ node_modules/
 dist/
 .env
 *.log
+
+/generated/prisma
+
+# Prisma e SQLite
+generated/
+*.db
+*.db-journal
