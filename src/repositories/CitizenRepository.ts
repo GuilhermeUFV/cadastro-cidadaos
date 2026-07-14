@@ -19,4 +19,17 @@ export class CitizenRepository {
       },
     });
   }
+
+  public async findByName(name: string) {
+    return prisma.citizen.findMany({
+      where: {
+        fullName: {
+          contains: name,
+        },
+      },
+      orderBy: {
+        fullName: "asc",
+      },
+    });
+  }
 }

@@ -29,6 +29,35 @@ export class CitizenService {
     });
   }
 
+  public async search(query: unknown) {
+    if (typeof query !== "string" || query.trim() === "") {
+      throw new AppError(
+        "Informe um CPF ou nome para pesquisar.",
+        400,
+      );
+    }
+
+    const normalizedQuery = query.trim().replace(/\s+/g, " ");
+    const looksLikeCpf = /^[\d.\-\s]+$/.test(normalizedQuery);
+
+    if (looksLikeCpf) {
+      const cpf = CpfValidator.normalize(normalizedQuery);
+
+      if (cpf.length !== 11) {
+        throw new AppError(
+          "Informe um CPF com 11 dígitos.",
+          400,
+        );
+      }
+
+      const citizen = await this.citizenRepository.findByCpf(cpf);
+
+      return citizen ? [citizen] : [];
+    }
+
+    return this.citizenRepository.findByName(normalizedQuery);
+  }
+
   private normalizeFullName(value: unknown): string {
     if (typeof value !== "string") {
       throw new AppError("O nome completo é obrigatório.", 400);
