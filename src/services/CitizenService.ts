@@ -1,5 +1,8 @@
 import { AppError } from "../errors/AppError.js";
-import { CitizenRepository } from "../repositories/CitizenRepository.js";
+import {
+  CitizenRepository,
+  type CitizenRepositoryContract,
+} from "../repositories/CitizenRepository.js";
 import { CpfValidator } from "../validators/CpfValidator.js";
 
 export interface CreateCitizenInput {
@@ -9,7 +12,8 @@ export interface CreateCitizenInput {
 
 export class CitizenService {
   constructor(
-    private readonly citizenRepository = new CitizenRepository(),
+    private readonly citizenRepository:
+      CitizenRepositoryContract = new CitizenRepository(),
   ) {}
 
   public async create(input: CreateCitizenInput) {
