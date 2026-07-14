@@ -1,4 +1,6 @@
 import express from "express";
+import { errorHandler } from "./middlewares/errorHandler.js";
+import { citizenRoutes } from "./routes/citizenRoutes.js";
 
 export class App {
   public readonly express = express();
@@ -6,6 +8,7 @@ export class App {
   constructor() {
     this.configureMiddlewares();
     this.configureRoutes();
+    this.configureErrorHandling();
   }
 
   private configureMiddlewares(): void {
@@ -19,5 +22,11 @@ export class App {
         message: "Servidor funcionando",
       });
     });
+
+    this.express.use("/api/citizens", citizenRoutes);
+  }
+
+  private configureErrorHandling(): void {
+    this.express.use(errorHandler);
   }
 }
