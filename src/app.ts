@@ -1,4 +1,5 @@
 import express from "express";
+import path from "node:path";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { citizenRoutes } from "./routes/citizenRoutes.js";
 
@@ -13,6 +14,10 @@ export class App {
 
   private configureMiddlewares(): void {
     this.express.use(express.json());
+
+    this.express.use(
+      express.static(path.join(process.cwd(), "public")),
+    );
   }
 
   private configureRoutes(): void {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    name="description"
+    content="Cadastro e consulta de cidadãos brasileiros"
+  >
+  <title>Cadastro de Cidadãos</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <span class="eyebrow">Sistema de cidadãos</span>
+      <h1>Cadastro de cidadãos brasileiros</h1>
+      <p>
+        Cadastre um cidadão ou pesquise um registro existente
+        pelo nome ou CPF.
+      </p>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="card" aria-labelledby="register-title">
+      <div class="card-heading">
+        <span class="step">01</span>
+        <div>
+          <h2 id="register-title">Cadastrar cidadão</h2>
+          <p>Informe o nome completo e um CPF válido.</p>
+        </div>
+      </div>
+
+      <form id="register-form">
+        <div class="field">
+          <label for="full-name">Nome completo</label>
+          <input
+            id="full-name"
+            name="fullName"
+            type="text"
+            placeholder="Ex.: Maria da Silva"
+            autocomplete="name"
+            minlength="3"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="cpf">CPF</label>
+          <input
+            id="cpf"
+            name="cpf"
+            type="text"
+            placeholder="000.000.000-00"
+            inputmode="numeric"
+            maxlength="14"
+            required
+          >
+        </div>
+
+        <button type="submit">Cadastrar cidadão</button>
+      </form>
+
+      <div
+        id="register-result"
+        class="result hidden"
+        role="status"
+        aria-live="polite"
+      ></div>
+    </section>
+
+    <section class="card" aria-labelledby="search-title">
+      <div class="card-heading">
+        <span class="step">02</span>
+        <div>
+          <h2 id="search-title">Pesquisar cidadão</h2>
+          <p>Digite o nome ou CPF que deseja consultar.</p>
+        </div>
+      </div>
+
+      <form id="search-form">
+        <div class="field">
+          <label for="search-query">Nome ou CPF</label>
+          <input
+            id="search-query"
+            name="query"
+            type="search"
+            placeholder="Ex.: Maria ou 000.000.000-00"
+            required
+          >
+        </div>
+
+        <button type="submit">Pesquisar</button>
+      </form>
+
+      <div
+        id="search-result"
+        class="result hidden"
+        role="status"
+        aria-live="polite"
+      ></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Desenvolvido para o desafio de cadastro de cidadãos.
+    </div>
+  </footer>
+</body>
+</html>
