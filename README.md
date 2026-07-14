@@ -257,6 +257,8 @@ cadastro-cidadaos/
 
 ## Arquitetura
 
+Para uma explicação detalhada das classes, métodos e fluxos internos, consulte a [documentação de arquitetura](docs/ARCHITECTURE.md).
+
 O backend foi organizado em camadas:
 
 - **Controller:** recebe requisições HTTP e produz respostas;
